@@ -1,10 +1,6 @@
 <?php
 	define("GELDEENHEDEN", [50, 20, 10, 5, 2, 1, 0.5, 0.2, 0.1, 0.05]);
-	if (count($argv) < 2 || $argv[1] == "")
-		{
-			echo "Je hebt geen bedrag meegegeven dat omgewisseld dient te worden";
-			exit;
-		}
+	
 	$IN = $argv[1];
 	isValid($IN);
 	$input = round($argv[1]/0.05)*0.05;
@@ -12,6 +8,11 @@
 	calcChange($input);
 
 	function isValid($e){
+		if (count($e) < 2 || $e[1] == "")
+		{
+			echo "Je hebt geen bedrag meegegeven dat omgewisseld dient te worden";
+			exit;
+		}
 		if ($e[0] == "-"){
 			echo "Ik kan geen negatief bedrag wisselen";
 			exit;
